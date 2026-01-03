@@ -1,6 +1,12 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { Project } from '@kms/shared'
 
+export interface ExportResult {
+  success: boolean
+  path?: string
+  error?: string
+}
+
 // Type-safe API exposed to renderer
 export interface ElectronAPI {
   platform: NodeJS.Platform
@@ -10,6 +16,9 @@ export interface ElectronAPI {
     saveAs: (filePath: string, project: Project) => Promise<void>
     load: () => Promise<{ project: Project; filePath: string } | null>
     restoreBackup: (filePath: string) => Promise<Project>
+  }
+  export: {
+    datapack: (project: Project) => Promise<ExportResult>
   }
 }
 
@@ -21,6 +30,9 @@ const api: ElectronAPI = {
     saveAs: (filePath: string, project: Project) => ipcRenderer.invoke('project:saveAs', filePath, project),
     load: () => ipcRenderer.invoke('project:load'),
     restoreBackup: (filePath: string) => ipcRenderer.invoke('project:restoreBackup', filePath)
+  },
+  export: {
+    datapack: (project: Project) => ipcRenderer.invoke('export:datapack', project)
   }
 }
 

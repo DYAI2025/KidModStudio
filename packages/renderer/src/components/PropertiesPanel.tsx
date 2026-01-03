@@ -85,6 +85,7 @@ const PropertiesPanel: FC = () => {
           {ELEMENT_TYPES.map(type => (
             <button
               key={type}
+              data-element={type}
               className={`element-button ${selectedItem.element?.type === type ? 'selected' : ''}`}
               onClick={() => handleElementChange(selectedItem.element?.type === type ? '' : type)}
             >

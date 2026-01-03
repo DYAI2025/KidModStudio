@@ -2,6 +2,7 @@ import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from './store'
 import Header from './components/Header'
+import CloudBackground from './components/CloudBackground'
 import ItemLibraryPanel from './components/ItemLibraryPanel'
 import PropertiesPanel from './components/PropertiesPanel'
 import Preview3D from './components/Preview3D'
@@ -12,6 +13,7 @@ const App: FC = () => {
 
   return (
     <div className="app">
+      <CloudBackground />
       <Header />
 
       <main className="workbench">

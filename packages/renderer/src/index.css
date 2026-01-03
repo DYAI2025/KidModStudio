@@ -1,3 +1,38 @@
+/* KidModStudio - Shader UI Theme */
+/* Minecraft HD Shader Raytracing Aesthetic */
+
+:root {
+  /* Accent Colors */
+  --accent: #50C878;
+  --accent-hover: #5FD88A;
+  --accent-glow: 0 0 20px rgba(80, 200, 120, 0.5);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --glass-blur: blur(12px);
+
+  /* Element Colors */
+  --element-fire: #FF6B35;
+  --element-ice: #4AEDD9;
+  --element-water: #3B82F6;
+  --element-poison: #A855F7;
+  --element-healing: #22C55E;
+  --element-lightning: #FACC15;
+  --element-light: #F5F5F5;
+
+  /* Sky Gradient */
+  --sky-top: #1a1a2e;
+  --sky-mid: #4a1942;
+  --sky-bottom: #ff6b35;
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-dark: #1a1a2e;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,34 +41,93 @@
 
 body {
   font-family: system-ui, -apple-system, sans-serif;
-  background: #f5f5f5;
+  background: linear-gradient(to bottom,
+    var(--sky-top) 0%,
+    var(--sky-mid) 50%,
+    var(--sky-bottom) 100%
+  );
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--text-primary);
+  overflow: hidden;
 }
 
-.app {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-header {
-  background: #2563eb;
-  color: white;
-  padding: 1rem;
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 }
 
-.workbench {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 250px 1fr 300px;
-  gap: 1rem;
-  padding: 1rem;
+::-webkit-scrollbar-thumb {
+  background: rgba(80, 200, 120, 0.5);
+  border-radius: 4px;
 }
 
-.workbench-left,
-.workbench-center,
-.workbench-right {
-  background: white;
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Global Glass Panel Style */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+}
+
+/* Global Button Style */
+button {
+  background: rgba(80, 200, 120, 0.2);
+  border: 1px solid var(--accent);
+  color: var(--accent);
   border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+button:hover {
+  background: var(--accent);
+  color: var(--text-dark);
+  box-shadow: var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Muted Text */
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px var(--accent); }
+  50% { box-shadow: 0 0 20px var(--accent); }
 }

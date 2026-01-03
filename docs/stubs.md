@@ -6,11 +6,15 @@
 ## Sprint 0 - Foundation
 
 ### Completed
-- [x] Monorepo structure
+- [x] Monorepo structure (pnpm workspaces)
 - [x] Type definitions (elements, triggers, project)
-- [x] No-Stub Scanner
-- [x] Basic Electron shell
+- [x] No-Stub Scanner with CLI
+- [x] CI Pipeline (GitHub Actions)
+- [x] Basic Electron shell (main process)
 - [x] React UI shell (No-Fake compliant)
+- [x] Preload bridge (IPC types)
+- [x] E2E test setup (Playwright)
+- [x] Documentation (README, architecture)
 
 ### Placeholders (Not Yet Started)
 - [ ] `packages/voice-service/` - Entire package (Sprint 4)

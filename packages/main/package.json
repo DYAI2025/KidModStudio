@@ -11,16 +11,18 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "electron": "^28.1.0",
-    "@kms/shared": "workspace:*"
+    "@kms/shared": "workspace:*",
+    "electron": "^28.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.6",
+    "@vitejs/plugin-react": "^4.7.0",
+    "playwright": "^1.40.1",
+    "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vite-plugin-electron": "^0.28.1",
-    "typescript": "^5.3.3",
-    "@types/node": "^20.10.6",
-    "@playwright/test": "^1.40.1",
-    "playwright": "^1.40.1",
+    "vite-plugin-electron-renderer": "^0.14.6",
     "vitest": "^1.1.0"
   }
 }

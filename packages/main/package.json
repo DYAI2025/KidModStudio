@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "electron": "^28.1.0"
@@ -15,6 +16,8 @@
     "vite": "^5.0.10",
     "vite-plugin-electron": "^0.28.1",
     "typescript": "^5.3.3",
-    "@types/node": "^20.10.6"
+    "@types/node": "^20.10.6",
+    "@playwright/test": "^1.40.1",
+    "playwright": "^1.40.1"
   }
 }

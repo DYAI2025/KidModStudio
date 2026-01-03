@@ -35,12 +35,25 @@
 - [x] Item library with templates
 - [x] Properties panel with element/trigger selection
 
+## Sprint 2 - 3D Preview
+
+### Completed
+- [x] Preview3D component with Three.js canvas
+- [x] AutoRotate for automatic item rotation
+- [x] VoxelItem component (sword, block geometries)
+- [x] ElementParticles with level-based scaling
+- [x] Zoom-only OrbitControls (kid-friendly)
+
+### UI Now Visible
+- [x] 3D preview canvas in center panel
+- [x] Rotating items when selected
+- [x] Element particle effects (fire, ice, water, poison, healing, lightning, light)
+- [x] Level-based particle intensity (1-3)
+
 ## Placeholders (Not Yet Started)
 - [ ] `packages/voice-service/` - Entire package (Sprint 4)
 - [ ] `packages/llm-gateway/` - Entire package (Sprint 5)
 - [ ] `packages/exporter/` - Entire package (Sprint 3)
-- [ ] 3D Preview (Sprint 2)
-- [ ] Element Palette (Sprint 2)
 
 ## Rules
 
@@ -48,14 +61,9 @@
 2. **CI enforces:** No `Mock*`, `Echo*`, `Stub*`, `Dummy*`, `Fake*` providers in production code
 3. **Update this file:** Every sprint planning session
 
-## Next Sprint (Sprint 2)
+## Next Sprint (Sprint 3)
 
 **To implement:**
-- [ ] 3D Preview with Three.js
-- [ ] Element visual effects
-- [ ] Item/Block rendering
-- [ ] Camera controls
-
-**UI to show after implementation:**
-- [ ] 3D preview canvas (only when rendering works)
-- [ ] Element visual indicators
+- [ ] Minecraft datapack exporter
+- [ ] Export dialog UI
+- [ ] File generation service

@@ -50,10 +50,23 @@
 - [x] Element particle effects (fire, ice, water, poison, healing, lightning, light)
 - [x] Level-based particle intensity (1-3)
 
+## Sprint 3 - Datapack Export
+
+### Completed
+- [x] @kms/exporter package with datapack generator
+- [x] Element → Enchantment mapping (fire_aspect, frost_walker, etc.)
+- [x] Item command generator for Minecraft 1.20.5+
+- [x] Export IPC handler with folder dialog
+- [x] Exportieren button in Header
+
+### UI Now Visible
+- [x] "Exportieren" button (generates Minecraft datapack)
+- [x] Validation alerts for incomplete items
+- [x] Success alert with export path
+
 ## Placeholders (Not Yet Started)
 - [ ] `packages/voice-service/` - Entire package (Sprint 4)
 - [ ] `packages/llm-gateway/` - Entire package (Sprint 5)
-- [ ] `packages/exporter/` - Entire package (Sprint 3)
 
 ## Rules
 
@@ -61,9 +74,9 @@
 2. **CI enforces:** No `Mock*`, `Echo*`, `Stub*`, `Dummy*`, `Fake*` providers in production code
 3. **Update this file:** Every sprint planning session
 
-## Next Sprint (Sprint 3)
+## Next Sprint (Sprint 4)
 
 **To implement:**
-- [ ] Minecraft datapack exporter
-- [ ] Export dialog UI
-- [ ] File generation service
+- [ ] Voice command service
+- [ ] Speech-to-text integration
+- [ ] Voice UI feedback

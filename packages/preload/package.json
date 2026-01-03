@@ -8,6 +8,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@kms/shared": "workspace:*",
     "electron": "^28.1.0"
   },
   "devDependencies": {

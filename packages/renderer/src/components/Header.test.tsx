@@ -15,6 +15,9 @@ const mockElectronAPI = {
     saveAs: vi.fn(),
     load: vi.fn(),
     restoreBackup: vi.fn()
+  },
+  export: {
+    datapack: vi.fn()
   }
 }
 
@@ -126,5 +129,44 @@ describe('Header', () => {
     await waitFor(() => {
       expect(mockElectronAPI.project.saveAs).toHaveBeenCalledWith('/file.kms', project)
     })
+  })
+
+  it('should show Exportieren button when project is loaded', () => {
+    const project = createEmptyProject('Test')
+    renderWithStore(<Header />, {
+      project: { project, filePath: null, isDirty: false, selectedItemId: null }
+    })
+    expect(screen.getByText('Exportieren')).toBeInTheDocument()
+  })
+
+  it('should show alert when exporting empty project', () => {
+    const alertMock = vi.spyOn(window, 'alert').mockImplementation(() => {})
+    const project = createEmptyProject('Test')
+
+    renderWithStore(<Header />, {
+      project: { project, filePath: null, isDirty: false, selectedItemId: null }
+    })
+
+    fireEvent.click(screen.getByText('Exportieren'))
+
+    expect(alertMock).toHaveBeenCalledWith('Keine Items zum Exportieren')
+    alertMock.mockRestore()
+  })
+
+  it('should show alert when exporting items without element', () => {
+    const alertMock = vi.spyOn(window, 'alert').mockImplementation(() => {})
+    const project = createEmptyProject('Test')
+    project.items = [{ id: '1', name: 'Test', type: 'item' }]
+
+    renderWithStore(<Header />, {
+      project: { project, filePath: null, isDirty: false, selectedItemId: null }
+    })
+
+    fireEvent.click(screen.getByText('Exportieren'))
+
+    expect(alertMock).toHaveBeenCalledWith(
+      expect.stringContaining('Bitte wähle zuerst Element')
+    )
+    alertMock.mockRestore()
   })
 })

@@ -27,6 +27,31 @@ const Header: FC = () => {
     }
   }
 
+  const handleExport = async () => {
+    if (!project) return
+
+    if (project.items.length === 0) {
+      alert('Keine Items zum Exportieren')
+      return
+    }
+
+    const incompleteItems = project.items.filter(
+      item => !item.element && !item.trigger
+    )
+    if (incompleteItems.length > 0) {
+      const itemNames = incompleteItems.map(i => i.name).join(', ')
+      alert(`Bitte wähle zuerst Element oder Trigger für: ${itemNames}`)
+      return
+    }
+
+    const result = await window.electronAPI.export.datapack(project)
+    if (result.success) {
+      alert(`Datapack exportiert nach:\n${result.path}`)
+    } else if (result.error !== 'Abgebrochen') {
+      alert(result.error)
+    }
+  }
+
   return (
     <header className="app-header">
       <h1>KidModStudio</h1>
@@ -35,10 +60,13 @@ const Header: FC = () => {
         <button onClick={createNew}>Neu</button>
         <button onClick={load}>Laden</button>
         {project && (
-          <button onClick={handleSave}>
-            Speichern
-            {isDirty && <span className="dirty-indicator">●</span>}
-          </button>
+          <>
+            <button onClick={handleSave}>
+              Speichern
+              {isDirty && <span className="dirty-indicator">●</span>}
+            </button>
+            <button onClick={handleExport}>Exportieren</button>
+          </>
         )}
       </div>
 

@@ -53,6 +53,22 @@ importers:
         specifier: ^1.1.0
         version: 1.6.1(@types/node@20.19.27)(jsdom@23.2.0)
 
+  packages/preload:
+    dependencies:
+      electron:
+        specifier: ^28.1.0
+        version: 28.3.3
+    devDependencies:
+      '@types/node':
+        specifier: ^20.10.6
+        version: 20.19.27
+      typescript:
+        specifier: ^5.3.3
+        version: 5.9.3
+      vite:
+        specifier: ^5.0.10
+        version: 5.4.21(@types/node@20.19.27)
+
   packages/renderer:
     dependencies:
       '@kms/shared':

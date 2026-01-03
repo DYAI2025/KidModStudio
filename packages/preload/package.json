@@ -1,0 +1,18 @@
+{
+  "name": "@kms/preload",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "electron": "^28.1.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.10",
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.6"
+  }
+}

@@ -10,6 +10,12 @@ out/
 
 # OS files
 .DS_Store
+Thumbs.db
+
+# Large archives (never commit)
+*.zip
+*.tar.gz
+*.rar
 
 # Environment
 .env

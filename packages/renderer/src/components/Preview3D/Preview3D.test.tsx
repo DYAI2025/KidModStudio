@@ -10,12 +10,14 @@ import { createEmptyProject } from '@kms/shared'
 vi.mock('@react-three/fiber', () => ({
   Canvas: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="three-canvas">{children}</div>
-  )
+  ),
+  useFrame: () => {}
 }))
 
 vi.mock('@react-three/drei', () => ({
   OrbitControls: () => null,
-  Environment: () => null
+  Environment: () => null,
+  Sparkles: () => null
 }))
 
 function renderWithStore(preloadedState = {}) {
@@ -46,5 +48,21 @@ describe('Preview3D', () => {
       project: { project, filePath: null, isDirty: false, selectedItemId: null }
     })
     expect(screen.getByText('Wähle ein Item')).toBeInTheDocument()
+  })
+
+  it('should render VoxelItem when item is selected', () => {
+    const project = createEmptyProject('Test')
+    project.items = [{
+      id: 'item-1',
+      name: 'Fire Sword',
+      type: 'item',
+      element: { type: 'fire', level: 2 }
+    }]
+    renderWithStore({
+      project: { project, filePath: null, isDirty: false, selectedItemId: 'item-1' }
+    })
+    expect(screen.getByTestId('three-canvas')).toBeInTheDocument()
+    // Canvas should not show hint when item is selected
+    expect(screen.queryByText('Wähle ein Item')).not.toBeInTheDocument()
   })
 })

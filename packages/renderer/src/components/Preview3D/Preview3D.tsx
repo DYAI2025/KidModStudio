@@ -3,6 +3,9 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Environment } from '@react-three/drei'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store'
+import AutoRotate from './AutoRotate'
+import VoxelItem from './VoxelItem'
+import ElementParticles from './ElementParticles'
 import './Preview3D.css'
 
 const Preview3D: FC = () => {
@@ -28,22 +31,33 @@ const Preview3D: FC = () => {
         <Canvas camera={{ position: [3, 3, 3], fov: 50 }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
+          <directionalLight position={[-5, 3, -5]} intensity={0.3} />
 
-          {selectedItem ? (
-            <mesh>
-              <boxGeometry args={[1, 1, 1]} />
-              <meshStandardMaterial color="#4a90d9" />
-            </mesh>
-          ) : (
-            <group>
+          <AutoRotate speed={0.5}>
+            {selectedItem ? (
+              <group>
+                <VoxelItem
+                  itemType={selectedItem.type}
+                  elementType={selectedItem.element?.type}
+                />
+                {selectedItem.element && (
+                  <ElementParticles element={selectedItem.element} />
+                )}
+              </group>
+            ) : (
               <mesh>
                 <boxGeometry args={[0.5, 0.5, 0.5]} />
-                <meshStandardMaterial color="#666" />
+                <meshStandardMaterial color="#444" wireframe />
               </mesh>
-            </group>
-          )}
+            )}
+          </AutoRotate>
 
-          <OrbitControls enableRotate={false} enableZoom={true} />
+          <OrbitControls
+            enableRotate={false}
+            enableZoom={true}
+            minDistance={2}
+            maxDistance={10}
+          />
           <Environment preset="city" />
         </Canvas>
       </div>

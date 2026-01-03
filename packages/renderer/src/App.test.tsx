@@ -6,6 +6,20 @@ import { projectReducer } from './store/projectSlice'
 import App from './App'
 import { createEmptyProject } from '@kms/shared'
 
+// Mock react-three/fiber since it requires WebGL
+vi.mock('@react-three/fiber', () => ({
+  Canvas: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="three-canvas">{children}</div>
+  ),
+  useFrame: () => {}
+}))
+
+vi.mock('@react-three/drei', () => ({
+  OrbitControls: () => null,
+  Environment: () => null,
+  Sparkles: () => null
+}))
+
 // Mock electronAPI
 beforeEach(() => {
   ;(window as any).electronAPI = {
@@ -59,12 +73,11 @@ describe('App', () => {
     expect(screen.getByText('Eigenschaften')).toBeInTheDocument()
   })
 
-  it('should show 3D preview placeholder when project loaded', () => {
+  it('should show 3D preview when project loaded', () => {
     const project = createEmptyProject('Test')
     renderWithStore({
       project: { project, filePath: null, isDirty: false, selectedItemId: null }
     })
-    expect(screen.getByText('3D Vorschau')).toBeInTheDocument()
-    expect(screen.getByText('Sprint 2')).toBeInTheDocument()
+    expect(screen.getByTestId('three-canvas')).toBeInTheDocument()
   })
 })

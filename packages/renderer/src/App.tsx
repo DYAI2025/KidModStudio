@@ -4,6 +4,7 @@ import { RootState } from './store'
 import Header from './components/Header'
 import ItemLibraryPanel from './components/ItemLibraryPanel'
 import PropertiesPanel from './components/PropertiesPanel'
+import Preview3D from './components/Preview3D'
 import './App.css'
 
 const App: FC = () => {
@@ -20,10 +21,7 @@ const App: FC = () => {
 
         <div className="workbench-center">
           {project ? (
-            <div className="preview-placeholder">
-              <p>3D Vorschau</p>
-              <span className="coming-soon">Sprint 2</span>
-            </div>
+            <Preview3D />
           ) : (
             <div className="welcome">
               <h2>Willkommen bei KidModStudio!</h2>

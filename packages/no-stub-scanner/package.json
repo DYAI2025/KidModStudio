@@ -1,0 +1,22 @@
+{
+  "name": "@kms/no-stub-scanner",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./src/scanner.ts",
+  "bin": {
+    "no-stub-scan": "./src/cli.ts"
+  },
+  "scripts": {
+    "scan": "tsx src/cli.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "glob": "^10.3.10"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0",
+    "tsx": "^4.7.0",
+    "@types/node": "^20.10.6"
+  }
+}

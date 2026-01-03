@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { validateProject, ProjectValidationError } from './project-schema'
+import { validateProject } from './project-schema'
 import { createEmptyProject } from '../types/project'
 
 describe('Project Schema Validation', () => {

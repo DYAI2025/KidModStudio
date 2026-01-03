@@ -16,14 +16,31 @@
 - [x] E2E test setup (Playwright)
 - [x] Documentation (README, architecture)
 
-### Placeholders (Not Yet Started)
+## Sprint 1 - Save/Load
+
+### Completed
+- [x] Zod schema validation for projects
+- [x] File service with atomic writes and backups
+- [x] IPC handlers for save/load/new
+- [x] Preload API with project methods
+- [x] Redux store with project slice
+- [x] ItemLibraryPanel component
+- [x] PropertiesPanel component
+- [x] Header with Speichern/Laden/Neu buttons
+
+### UI Now Visible
+- [x] "Neu" button (creates new project)
+- [x] "Laden" button (opens file dialog)
+- [x] "Speichern" button (only when project loaded)
+- [x] Item library with templates
+- [x] Properties panel with element/trigger selection
+
+## Placeholders (Not Yet Started)
 - [ ] `packages/voice-service/` - Entire package (Sprint 4)
 - [ ] `packages/llm-gateway/` - Entire package (Sprint 5)
 - [ ] `packages/exporter/` - Entire package (Sprint 3)
-- [ ] Save/Load functionality (Sprint 1)
 - [ ] 3D Preview (Sprint 2)
 - [ ] Element Palette (Sprint 2)
-- [ ] Properties Panel (Sprint 1)
 
 ## Rules
 
@@ -31,16 +48,14 @@
 2. **CI enforces:** No `Mock*`, `Echo*`, `Stub*`, `Dummy*`, `Fake*` providers in production code
 3. **Update this file:** Every sprint planning session
 
-## Next Sprint (Sprint 1)
+## Next Sprint (Sprint 2)
 
 **To implement:**
-- [ ] Project save/load with atomic writes
-- [ ] Project schema validator
-- [ ] Backup/restore flow
-- [ ] ItemLibraryPanel component
-- [ ] PropertiesPanel component with checklist
+- [ ] 3D Preview with Three.js
+- [ ] Element visual effects
+- [ ] Item/Block rendering
+- [ ] Camera controls
 
 **UI to show after implementation:**
-- [ ] "Speichern" button (only when save implemented)
-- [ ] "Laden" button (only when load implemented)
-- [ ] Item library panel (only when items exist)
+- [ ] 3D preview canvas (only when rendering works)
+- [ ] Element visual indicators

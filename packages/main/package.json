@@ -11,6 +11,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@kms/exporter": "workspace:*",
     "@kms/shared": "workspace:*",
     "electron": "^28.1.0"
   },

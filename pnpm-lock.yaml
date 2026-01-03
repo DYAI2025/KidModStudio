@@ -15,8 +15,24 @@ importers:
         specifier: ^5.3.3
         version: 5.9.3
 
+  packages/exporter:
+    dependencies:
+      '@kms/shared':
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      typescript:
+        specifier: ^5.3.3
+        version: 5.9.3
+      vitest:
+        specifier: ^1.1.0
+        version: 1.6.1(@types/node@20.19.27)(jsdom@23.2.0)
+
   packages/main:
     dependencies:
+      '@kms/exporter':
+        specifier: workspace:*
+        version: link:../exporter
       '@kms/shared':
         specifier: workspace:*
         version: link:../shared

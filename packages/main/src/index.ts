@@ -1,7 +1,9 @@
 import { app, BrowserWindow } from 'electron'
 import { createMainWindow } from './window'
+import { registerProjectHandlers } from './ipc/project-handlers'
 
 app.whenReady().then(() => {
+  registerProjectHandlers()
   createMainWindow()
 })
 

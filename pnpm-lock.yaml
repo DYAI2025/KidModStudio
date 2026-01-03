@@ -67,6 +67,9 @@ importers:
 
   packages/preload:
     dependencies:
+      '@kms/shared':
+        specifier: workspace:*
+        version: link:../shared
       electron:
         specifier: ^28.1.0
         version: 28.3.3

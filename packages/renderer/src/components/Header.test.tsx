@@ -93,4 +93,38 @@ describe('Header', () => {
     })
     expect(screen.getByText('●')).toBeInTheDocument()
   })
+
+  it('should show alert when saving items without element or trigger', () => {
+    const alertMock = vi.spyOn(window, 'alert').mockImplementation(() => {})
+    const project = createEmptyProject('Test')
+    project.items = [{ id: '1', name: 'Incomplete Item', type: 'item' }]
+
+    renderWithStore(<Header />, {
+      project: { project, filePath: '/file.kms', isDirty: true, selectedItemId: null }
+    })
+
+    fireEvent.click(screen.getByText('Speichern'))
+
+    expect(alertMock).toHaveBeenCalledWith(
+      'Bitte wähle zuerst Element oder Trigger für: Incomplete Item'
+    )
+    expect(mockElectronAPI.project.save).not.toHaveBeenCalled()
+    alertMock.mockRestore()
+  })
+
+  it('should save when items have element or trigger', async () => {
+    const project = createEmptyProject('Test')
+    project.items = [{ id: '1', name: 'Complete Item', type: 'item', element: { type: 'fire', level: 1 } }]
+    mockElectronAPI.project.saveAs.mockResolvedValue(undefined)
+
+    renderWithStore(<Header />, {
+      project: { project, filePath: '/file.kms', isDirty: true, selectedItemId: null }
+    })
+
+    fireEvent.click(screen.getByText('Speichern'))
+
+    await waitFor(() => {
+      expect(mockElectronAPI.project.saveAs).toHaveBeenCalledWith('/file.kms', project)
+    })
+  })
 })

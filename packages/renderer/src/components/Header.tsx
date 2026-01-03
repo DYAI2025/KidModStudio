@@ -12,6 +12,17 @@ const Header: FC = () => {
 
   const handleSave = () => {
     if (project) {
+      // Validate: Check if items have incomplete properties
+      const incompleteItems = project.items.filter(
+        item => !item.element && !item.trigger
+      )
+
+      if (incompleteItems.length > 0) {
+        const itemNames = incompleteItems.map(i => i.name).join(', ')
+        alert(`Bitte wähle zuerst Element oder Trigger für: ${itemNames}`)
+        return
+      }
+
       save(project, filePath)
     }
   }

@@ -7,10 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "electron": "^28.1.0"
+    "electron": "^28.1.0",
+    "@kms/shared": "workspace:*"
   },
   "devDependencies": {
     "vite": "^5.0.10",
@@ -18,6 +20,7 @@
     "typescript": "^5.3.3",
     "@types/node": "^20.10.6",
     "@playwright/test": "^1.40.1",
-    "playwright": "^1.40.1"
+    "playwright": "^1.40.1",
+    "vitest": "^1.1.0"
   }
 }
